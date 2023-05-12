@@ -1,8 +1,6 @@
 from scholarly import scholarly, ProxyGenerator
 import pandas as pd
-import os, sys
-import argparse
-from crossref.restful import Works
+import os, sys, argparse
 
 class LitScholar(): 
     def __init__(self, num_papers, enable_cited_by=False, folder="results"): 
@@ -96,6 +94,8 @@ class LitScholar():
         writer.close()
 
         print(f"[+] Wrote {self.num_papers} papers to {file_path}")
+
+        return file_path
  
 if __name__ == "__main__": 
     # get the query from the command line argument -q or --query

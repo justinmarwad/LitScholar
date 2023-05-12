@@ -1,1 +1,6 @@
 results/
+build/
+dist/
+*.log
+*.pyc
+__pycache__/
