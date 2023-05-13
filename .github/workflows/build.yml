@@ -39,7 +39,7 @@ jobs:
       - name: Create artifact
         uses: actions/upload-artifact@v2
         with:
-          name: myapp-binaries
+          name: LitScholar-binaries
           path: |
             LitScholar.exe
             LitScholar-Linux
