@@ -24,23 +24,20 @@ jobs:
       - name: Build for Windows
         run: |
           pyinstaller --onefile --noconsole --name LitScholar --icon icon.ico gui.py
-          mv dist/LitScholar.exe LitScholar.exe
 
       - name: Build for Linux
         run: |
           pyinstaller --onefile --noconsole --name LitScholar-Linux --icon icon.ico gui.py
-          mv dist/LitScholar-Linux LitScholar-Linux
 
       - name: Build for macOS
         run: |
           pyinstaller --onefile --noconsole --name LitScholar-Mac --icon icon.ico gui.py
-          mv dist/LitScholar-Mac LitScholar-Mac
 
       - name: Create artifact
         uses: actions/upload-artifact@v2
         with:
           name: LitScholar-binaries
           path: |
-            LitScholar.exe
-            LitScholar-Linux
-            LitScholar-Mac
+            dist/LitScholar.exe
+            dist/LitScholar-Linux
+            dist/LitScholar-Mac
