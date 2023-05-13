@@ -41,3 +41,48 @@ jobs:
             dist/LitScholar.exe
             dist/LitScholar-Linux
             dist/LitScholar-Mac
+
+
+     - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          release_name: v1.0.${{ github.run_number }}
+          draft: false
+          prerelease: false
+
+      - name: Upload release asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/LitScholar.exe
+          asset_name: LitScholar.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload release asset
+        id: upload-release-asset-2
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/LitScholar-Linux
+          asset_name: LitScholar-Linux
+          asset_content_type: application/octet-stream
+
+      - name: Upload release asset
+        id: upload-release-asset-3
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/LitScholar-Mac
+          asset_name: LitScholar-Mac
+          asset_content_type: application/octet-stream
