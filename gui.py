@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QComboBox, QPushButton, QCheckBox, QMessageBox
+from PyQt6 import QtGui
 from litscholar import LitScholar
 import sys, os
 
@@ -6,8 +7,10 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        # Set window title, size, and icon
         self.setWindowTitle("Search Results")
         self.setGeometry(200, 200, 500, 300)
+        self.setWindowIcon(QtGui.QIcon('icon.ico'))
 
         # Create query label
         self.query_label = QLabel("Query:", self)
@@ -41,6 +44,8 @@ class MainWindow(QMainWindow):
         self.search_button = QPushButton("Search", self)
         self.search_button.setGeometry(50, 200, 100, 30)
         self.search_button.clicked.connect(self.search_results)
+
+
 
     def search_results(self):
         # Get search query
