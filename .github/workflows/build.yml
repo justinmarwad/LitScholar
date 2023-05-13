@@ -43,7 +43,7 @@ jobs:
             dist/LitScholar-Mac
 
 
-     - name: Create release
+      - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
